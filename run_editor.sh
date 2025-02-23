@@ -25,12 +25,5 @@ if $DISCOVERY_SERVER; then
         (exec "${PROJECT_DIR}/ros_discovery.sh")
 fi
 
-DEFAULT_LEVEL=${LEVEL_NAME:-"DigitalTwin"} 
-DEFAULT_RATE=${FIXED_FRAME_RATE:-"30.0"}
-DEFAULT_RTF=${TARGET_RTF:-"1.0"} 
-sed -e 's/${LEVEL_NAME}/'${DEFAULT_LEVEL}'/g' Config/DefaultEngineBase.ini > Config/DefaultEngine.ini
-sed -i -e 's/${FIXED_FRAME_RATE}/'${DEFAULT_RATE}'/g' Config/DefaultEngine.ini
-sed -i -e 's/${TARGET_RTF}/'${DEFAULT_RTF}'/g' Config/DefaultEngine.ini
-
 UE_EDITOR="${UE5_DIR}/Engine/Binaries/Linux/UnrealEditor"
 (exec "$UE_EDITOR" "${PROJECT_DIR}/nxtgen.uproject")
