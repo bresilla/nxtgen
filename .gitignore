@@ -65,17 +65,13 @@ Build/*/**
 # Don't ignore icon files in Build
 !Build/**/*.ico
 
-# Generated from DefaultEngineBase.init
-Config/DefaultEngine.ini
-
 # Whitelist Linux plugin libs
 !Plugins/*/ThirdParty/**/*.a
 
 *_BuiltData.uasset
 
-# External test python cache, pyc
-ExternalTest/TB3_TESTS
-ExternalTest/turtlebot3_tests/turtlebot3_tests/__pycache__
-ExternalTest/turtlebot3_tests/maps
+
 DerivedDataCache
 .direnv
+Binaries
+Intermediate
