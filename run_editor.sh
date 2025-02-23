@@ -17,24 +17,18 @@ fi
 printf "Syncing interfaces\n"
 rsync -av --ignore-existing Interfaces/ Plugins/rclUE
 
-DISCOVERY_SERVER=${1:-true}
 CURRENT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 PROJECT_DIR=${2:-"${CURRENT_DIR}"}
-if $DISCOVERY_SERVER; then
-        # Run discovery service for FastDDS
-        (exec "${PROJECT_DIR}/run_discovery_service.sh")
 
-        # Configure environment for FastDDS discovery
-        source ${PROJECT_DIR}/fastdds_setup.sh
+DISCOVERY_SERVER=${1:-true}
+if $DISCOVERY_SERVER; then
+        (exec "${PROJECT_DIR}/ros_discovery.sh")
 fi
 
-#change default level, generating DefautlEngine.ini
-DEFAULT_LEVEL=${LEVEL_NAME:-"ArtemyDigitalTwin"}
-DEFAULT_RATE=${FIXED_FRAME_RATE:-"30.0"}
-DEFAULT_RTF=${TARGET_RTF:-"1.0"}
-sed -e 's/${LEVEL_NAME}/'${DEFAULT_LEVEL}'/g' Config/DefaultEngineBase.ini > Config/DefaultEngine.ini
-sed -i -e 's/${FIXED_FRAME_RATE}/'${DEFAULT_RATE}'/g' Config/DefaultEngine.ini
-sed -i -e 's/${TARGET_RTF}/'${DEFAULT_RTF}'/g' Config/DefaultEngine.ini
+# DEFAULT_RATE=${FIXED_FRAME_RATE:-"30.0"}
+# DEFAULT_RTF=${TARGET_RTF:-"1.0"}
+# sed -i -e 's/${FIXED_FRAME_RATE}/'${DEFAULT_RATE}'/g' Config/DefaultEngine.ini
+# sed -i -e 's/${TARGET_RTF}/'${DEFAULT_RTF}'/g' Config/DefaultEngine.ini
 
 UE_EDITOR="${UE5_DIR}/Engine/Binaries/Linux/UnrealEditor"
-(exec "$UE_EDITOR" "${PROJECT_DIR}/artemy.uproject")
+(exec "$UE_EDITOR" "${PROJECT_DIR}/nxtgen.uproject")

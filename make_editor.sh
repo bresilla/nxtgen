@@ -24,8 +24,8 @@ if ! command -v dotnet &> /dev/null; then
 fi
 
 if [ -z "${UE5_DIR}" ]; then
-	printf "Please set UE5_DIR to path of UE5 UnrealEngine's parent folder\n"
-	exit 1
+    printf "Please set UE5_DIR to path of UE5 UnrealEngine's parent folder\n"
+    exit 1
 fi
 
 PROJ_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
