@@ -28,7 +28,7 @@ fi
 DEFAULT_LEVEL=${LEVEL_NAME:-"DigitalTwin"} 
 DEFAULT_RATE=${FIXED_FRAME_RATE:-"30.0"}
 DEFAULT_RTF=${TARGET_RTF:-"1.0"} 
-sed -e 's/${LEVEL_NAME}/'${DEFAULT_LEVEL}'/g' Config/DefaultEngineBase.ini > Config/DefaultEngine.in
+sed -e 's/${LEVEL_NAME}/'${DEFAULT_LEVEL}'/g' Config/DefaultEngineBase.ini > Config/DefaultEngine.ini
 sed -i -e 's/${FIXED_FRAME_RATE}/'${DEFAULT_RATE}'/g' Config/DefaultEngine.ini
 sed -i -e 's/${TARGET_RTF}/'${DEFAULT_RTF}'/g' Config/DefaultEngine.ini
 
