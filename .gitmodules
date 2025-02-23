@@ -1,0 +1,4 @@
+[submodule "Plugins/rclUE"]
+	path = Plugins/rclUE
+	url = https://github.com/rapyuta-robotics/rclUE
+	branch = UE5_devel_jazzy
